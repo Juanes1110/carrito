@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nova Store | Tienda en línea</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilos.css">
+  <script src="js/script.js" defer></script>
+</head>
+<body>
+  
+  <div class="barra-promo">
+    <svg data-slot="icon" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 0 0-3.213-9.193 2.056 2.056 0 0 0-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 0 0-10.026 0 1.106 1.106 0 0 0-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12"></path>
+</svg>
+ Envío gratis a todo Colombia · <strong>15% de descuento</strong> en compras desde $250.000
+  </div>
+
+  
+  <header class="encabezado">
+    <div class="contenedor encabezado__contenido">
+      <a href="#" class="logo">Nova<span>Store</span></a>
+
+      <form class="buscador" role="search" action="#">
+        <input type="search" placeholder="Buscar productos, marcas y más..." aria-label="Buscar productos">
+        <button type="submit">Buscar</button>
+      </form>
+
+      <a href="#carrito" class="icono-carrito" aria-label="Ver carrito">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="9" cy="21" r="1"></circle>
+          <circle cx="20" cy="21" r="1"></circle>
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+        </svg>
+        <span class="icono-carrito__contador" id="contador-carrito">2</span>
+      </a>
+    </div>
+
+    <nav class="menu">
+      <ul class="contenedor">
+        <li><a href="#" class="activo">Todo</a></li>
+        <li><a href="#">Tecnología</a></li>
+        <li><a href="#">Audio</a></li>
+        <li><a href="#">Accesorios</a></li>
+        <li><a href="#">Calzado</a></li>
+        <li><a href="#">Belleza</a></li>
+        <li><a href="#">Ofertas</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="contenedor principal">
+
+    
+    <section class="banner">
+      <div>
+        <span class="banner__etiqueta">Promoción de temporada</span>
+        <h1>Compra más, paga menos</h1>
+        <p>Por compras desde <strong>$250.000</strong> te aplicamos automáticamente un <strong>15% de descuento</strong> sobre el subtotal.</p>
+      </div>
+      <div class="banner__descuento">15%<small>de descuento</small></div>
+    </section>
+
+    <div class="tienda">
+
+     
+      <section class="productos">
+        <div class="productos__cabecera">
+          <h2>Productos destacados</h2>
+          <p>8 productos</p>
+        </div>
+
+        <div class="grilla-productos" id="grilla-productos">
+
+          <article class="producto" data-id="1" data-nombre="Audífonos inalámbricos" data-precio="129900"
+            data-imagen="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&q=80&auto=format&fit=crop">
+            <div class="producto__imagen">
+              <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&q=80&auto=format&fit=crop" alt="Audífonos inalámbricos" loading="lazy">
+              <span class="etiqueta">Nuevo</span>
+            </div>
+            <div class="producto__info">
+              <p class="producto__categoria">Audio</p>
+              <h3 class="producto__nombre">Audífonos inalámbricos</h3>
+              <p class="producto__precio">$129.900</p>
+              <button class="boton boton--primario btn-agregar" type="button">Agregar al carrito</button>
+            </div>
+          </article>
+
+          <article class="producto" data-id="2" data-nombre="Reloj clásico" data-precio="219900"
+            data-imagen="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&q=80&auto=format&fit=crop">
+            <div class="producto__imagen">
+              <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&q=80&auto=format&fit=crop" alt="Reloj clásico" loading="lazy">
+            </div>
+            <div class="producto__info">
+              <p class="producto__categoria">Accesorios</p>
+              <h3 class="producto__nombre">Reloj clásico</h3>
+              <p class="producto__precio">$219.900</p>
+              <button class="boton boton--primario btn-agregar" type="button">Agregar al carrito</button>
+            </div>
+          </article>
+
+          <article class="producto" data-id="3" data-nombre="Cámara instantánea" data-precio="389900"
+            data-imagen="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=600&q=80&auto=format&fit=crop">
+            <div class="producto__imagen">
+              <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=600&q=80&auto=format&fit=crop" alt="Cámara instantánea" loading="lazy">
+              <span class="etiqueta etiqueta--oferta">Más vendido</span>
+            </div>
+            <div class="producto__info">
+              <p class="producto__categoria">Fotografía</p>
+              <h3 class="producto__nombre">Cámara instantánea</h3>
+              <p class="producto__precio">$389.900</p>
+              <button class="boton boton--primario btn-agregar" type="button">Agregar al carrito</button>
+            </div>
+          </article>
+
+          <article class="producto" data-id="4" data-nombre="Tenis deportivos" data-precio="179900"
+            data-imagen="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&q=80&auto=format&fit=crop">
+            <div class="producto__imagen">
+              <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&q=80&auto=format&fit=crop" alt="Tenis deportivos" loading="lazy">
+            </div>
+            <div class="producto__info">
+              <p class="producto__categoria">Calzado</p>
+              <h3 class="producto__nombre">Tenis deportivos</h3>
+              <p class="producto__precio">$179.900</p>
+              <button class="boton boton--primario btn-agregar" type="button">Agregar al carrito</button>
+            </div>
+          </article>
+
+          <article class="producto" data-id="5" data-nombre="Gafas de sol" data-precio="89900"
+            data-imagen="https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=600&q=80&auto=format&fit=crop">
+            <div class="producto__imagen">
+              <img src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=600&q=80&auto=format&fit=crop" alt="Gafas de sol" loading="lazy">
+            </div>
+            <div class="producto__info">
+              <p class="producto__categoria">Accesorios</p>
+              <h3 class="producto__nombre">Gafas de sol</h3>
+              <p class="producto__precio">$89.900</p>
+              <button class="boton boton--primario btn-agregar" type="button">Agregar al carrito</button>
+            </div>
+          </article>
+
+          <article class="producto" data-id="6" data-nombre="Smartwatch deportivo" data-precio="299900"
+            data-imagen="https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=600&q=80&auto=format&fit=crop">
+            <div class="producto__imagen">
+              <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=600&q=80&auto=format&fit=crop" alt="Smartwatch deportivo" loading="lazy">
+              <span class="etiqueta">Nuevo</span>
+            </div>
+            <div class="producto__info">
+              <p class="producto__categoria">Tecnología</p>
+              <h3 class="producto__nombre">Smartwatch deportivo</h3>
+              <p class="producto__precio">$299.900</p>
+              <button class="boton boton--primario btn-agregar" type="button">Agregar al carrito</button>
+            </div>
+          </article>
+
+          <article class="producto" data-id="7" data-nombre="Perfume floral 100 ml" data-precio="159900"
+            data-imagen="https://images.unsplash.com/photo-1541643600914-78b084683601?w=600&q=80&auto=format&fit=crop">
+            <div class="producto__imagen">
+              <img src="https://images.unsplash.com/photo-1541643600914-78b084683601?w=600&q=80&auto=format&fit=crop" alt="Perfume floral" loading="lazy">
+            </div>
+            <div class="producto__info">
+              <p class="producto__categoria">Belleza</p>
+              <h3 class="producto__nombre">Perfume floral 100 ml</h3>
+              <p class="producto__precio">$159.900</p>
+              <button class="boton boton--primario btn-agregar" type="button">Agregar al carrito</button>
+            </div>
+          </article>
+
+          <article class="producto" data-id="8" data-nombre="Morral urbano" data-precio="139900"
+            data-imagen="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600&q=80&auto=format&fit=crop">
+            <div class="producto__imagen">
+              <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600&q=80&auto=format&fit=crop" alt="Morral urbano" loading="lazy">
+            </div>
+            <div class="producto__info">
+              <p class="producto__categoria">Accesorios</p>
+              <h3 class="producto__nombre">Morral urbano</h3>
+              <p class="producto__precio">$139.900</p>
+              <button class="boton boton--primario btn-agregar" type="button">Agregar al carrito</button>
+            </div>
+          </article>
+          <!------------------------------Agregar 2 Productos al inventario------------------------------>
+          <article class="producto" data-id="9" data-nombre="Cable Tipo C Ugreen" data-precio="38445"
+            data-imagen="https://http2.mlstatic.com/D_Q_NP_773249-MLA100002856027_112025-F.webp">
+            <div class="producto__imagen">
+              <img src="https://http2.mlstatic.com/D_Q_NP_773249-MLA100002856027_112025-F.webp" alt="Cable Tipo C Ugreen" loading="lazy">
+              <span class="etiqueta">Nuevo</span>
+
+            </div>
+            <div class="producto__info">
+              <p class="producto__categoria">Tecnologia</p>
+              <h3 class="producto__nombre">Cable Tipo C Ugreen</h3>
+              <p class="producto__precio">$38.445</p>
+              <button class="boton boton--primario btn-agregar" type="button">Agregar al carrito</button>
+            </div>
+          </article>
+
+          <article class="producto" data-id="10" data-nombre="Air Jordan 1 Travis Scott" data-precio="6293765"
+            data-imagen="https://cdn-images.farfetch-contents.com/14/07/70/10/14077010_18662963_600.jpg">
+            <div class="producto__imagen">
+              <img src="https://cdn-images.farfetch-contents.com/14/07/70/10/14077010_18662963_600.jpg" alt="Air Jordan 1 Travis Scott" loading="lazy">
+              <span class="etiqueta">Recien Sacadas del Nike Store</span>
+
+            </div>
+            <div class="producto__info">
+              <p class="producto__categoria">Calzado</p>
+              <h3 class="producto__nombre">Air Jordan 1 Travis Scott</h3>
+              <p class="producto__precio">$6'293.765</p>
+              <button class="boton boton--primario btn-agregar" type="button">Agregar al carrito</button>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+    
+      <aside class="carrito" id="carrito">
+        <div class="carrito__cabecera">
+          <h2>Tu carrito</h2>
+          <button class="boton-texto" id="vaciar-carrito" type="button">Vaciar carrito</button>
+        </div>
+
+        <div class="carrito__promo activa" id="promo">
+          <p id="promo-texto">🎉 ¡Genial! Tu compra al Superar los <strong>$250.000</strong> Estás ahorrando <strong id ="ahorro"></strong> con el 15%</p>
+          <div class="progreso"><div class="progreso__barra" id="progreso-barra" style="width: 100%;"></div></div>
+        </div>
+
+
+        <div class="carrito__vacio" id="carrito-vacio" hidden>
+          <span>🛒</span>
+          Tu carrito está vacío.<br>¡Agrega productos para empezar!
+        </div>
+
+        <ul class="carrito__lista" id="lista-carrito">
+          <li class="item-carrito">
+            <img class="item-carrito__imagen" src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&q=80&auto=format&fit=crop" alt="Audífonos inalámbricos">
+            <div>
+              <p class="item-carrito__nombre">Audífonos inalámbricos</p>
+              <p class="item-carrito__precio">$129.900 c/u</p>
+              <div class="cantidad">
+                <button class="cantidad__btn" data-accion="restar" data-id="1" aria-label="Restar uno">−</button>
+                <span class="cantidad__valor">1</span>
+                <button class="cantidad__btn" data-accion="sumar" data-id="1" aria-label="Sumar uno">+</button>
+              </div>
+            </div>
+            <div class="item-carrito__lateral">
+              <p class="item-carrito__total">$129.900</p>
+              <button class="item-carrito__eliminar" data-accion="eliminar" data-id="1" aria-label="Eliminar producto">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="3 6 5 6 21 6"></polyline>
+                  <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"></path>
+                  <path d="M10 11v6"></path><path d="M14 11v6"></path>
+                  <path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"></path>
+                </svg>
+              </button>
+            </div>
+          </li>
+          <li class="item-carrito">
+            <img class="item-carrito__imagen" src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&q=80&auto=format&fit=crop" alt="Reloj clásico">
+            <div>
+              <p class="item-carrito__nombre">Reloj clásico</p>
+              <p class="item-carrito__precio">$219.900 c/u</p>
+              <div class="cantidad">
+                <button class="cantidad__btn" data-accion="restar" data-id="2" aria-label="Restar uno">−</button>
+                <span class="cantidad__valor">1</span>
+                <button class="cantidad__btn" data-accion="sumar" data-id="2" aria-label="Sumar uno">+</button>
+              </div>
+            </div>
+            <div class="item-carrito__lateral">
+              <p class="item-carrito__total">$219.900</p>
+              <button class="item-carrito__eliminar" data-accion="eliminar" data-id="2" aria-label="Eliminar producto">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="3 6 5 6 21 6"></polyline>
+                  <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"></path>
+                  <path d="M10 11v6"></path><path d="M14 11v6"></path>
+                  <path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"></path>
+                </svg>
+              </button>
+            </div>
+          </li>
+        </ul>
+
+        <div class="carrito__resumen">
+          <div class="resumen__fila">
+            <span>Subtotal</span>
+            <span id="subtotal">$349.800</span>
+          </div>
+     
+          <div class="resumen__fila resumen__fila--descuento" id="fila-descuento">
+            <span>Descuento (15%)</span>
+            <span id="descuento">-$52.470</span>
+          </div>
+          <div class="resumen__fila">
+            <span>Envío</span>
+            <span class="texto-verde" id="envio">Gratis</span>
+          </div>
+          <div class="resumen__fila resumen__fila--total">
+            <span>Total</span>
+            <span id="total">$297.330</span>
+          </div>
+        </div>
+
+        <button class="boton boton--primario boton--bloque" id="btn-pagar" type="button">Finalizar compra</button>
+        <p class="carrito__seguro">
+          <svg data-slot="icon" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z"></path>
+</svg>
+ Pago 100% seguro</p>
+      </aside>
+
+    </div>
+  </main>
+
+
+  <footer class="pie">
+    <div class="contenedor">
+      <div class="pie__contenido">
+        <div>
+          <h3>NovaStore</h3>
+          <p>Tu tienda en línea de tecnología, moda y accesorios con envíos a todo el país.</p>
+        </div>
+        <div>
+          <h3>Ayuda</h3>
+          <ul>
+            <li><a href="#">Preguntas frecuentes</a></li>
+            <li><a href="#">Envíos y devoluciones</a></li>
+            <li><a href="#">Medios de pago</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Contacto</h3>
+          <ul>
+            <li>📍 Popayán, Cauca</li>
+            <li>📞 (602) 000 0000</li>
+            <li>✉️ contacto@novastore.co</li>
+          </ul>
+        </div>
+      </div>
+      <p class="pie__copy">© 2026 NovaStore · Proyecto académico</p>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+
+</body>
+</html>
