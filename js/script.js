@@ -30,6 +30,7 @@ const btnPagar = document.querySelector("#btn-pagar")
 const toast = document.getElementById("toast")
 
 
+const CLAVE_STORAGE = "novastore_carrito"
 let carrito = cargarCarrito()
 
 const formatoPesos = new Intl.NumberFormat("es-CO", {
@@ -178,6 +179,7 @@ function renderizarLista(){
 }
 
 function actualizar(){
+    try { localStorage.setItem(CLAVE_STORAGE, JSON.stringify(carrito)) } catch(e) {}
     renderizarLista()
     renderizarResumen()
 }
