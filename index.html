@@ -24,8 +24,8 @@
     <div class="contenedor encabezado__contenido">
       <a href="#" class="logo">Nova<span>Store</span></a>
 
-      <form class="buscador" role="search" action="#">
-        <input type="search" placeholder="Buscar productos, marcas y más..." aria-label="Buscar productos">
+      <form class="buscador" role="search" id="form-buscador" action="#">
+        <input type="search" id="input-buscador" placeholder="Buscar por nombre o código..." aria-label="Buscar productos">
         <button type="submit">Buscar</button>
       </form>
 
@@ -39,15 +39,16 @@
       </a>
     </div>
 
-    <nav class="menu">
+    <nav class="menu" id="menu-categorias">
       <ul class="contenedor">
-        <li><a href="#" class="activo">Todo</a></li>
-        <li><a href="#">Tecnología</a></li>
-        <li><a href="#">Audio</a></li>
-        <li><a href="#">Accesorios</a></li>
-        <li><a href="#">Calzado</a></li>
-        <li><a href="#">Belleza</a></li>
-        <li><a href="#">Ofertas</a></li>
+        <li><a href="#" class="activo" data-categoria="todo">Todo</a></li>
+        <li><a href="#" data-categoria="Tecnología">Tecnología</a></li>
+        <li><a href="#" data-categoria="Audio">Audio</a></li>
+        <li><a href="#" data-categoria="Accesorios">Accesorios</a></li>
+        <li><a href="#" data-categoria="Calzado">Calzado</a></li>
+        <li><a href="#" data-categoria="Belleza">Belleza</a></li>
+        <li><a href="#" data-categoria="Fotografía">Fotografía</a></li>
+        <li><a href="#" data-categoria="Ofertas">Ofertas</a></li>
       </ul>
     </nav>
   </header>
@@ -69,149 +70,23 @@
      
       <section class="productos">
         <div class="productos__cabecera">
-          <h2>Productos destacados</h2>
-          <p>8 productos</p>
+          <div>
+            <h2>Catálogo de productos</h2>
+            <span class="contador-productos" id="contador-productos">Cargando catálogo...</span>
+          </div>
+          <div class="productos__acciones-top">
+            <button class="btn-nuevo" id="btn-nuevo-producto" type="button" aria-label="Registrar nuevo producto">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+              Nuevo Producto
+            </button>
+          </div>
         </div>
 
         <div class="grilla-productos" id="grilla-productos">
-
-          <article class="producto" data-id="1" data-nombre="Audífonos inalámbricos" data-precio="129900"
-            data-imagen="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&q=80&auto=format&fit=crop">
-            <div class="producto__imagen">
-              <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&q=80&auto=format&fit=crop" alt="Audífonos inalámbricos" loading="lazy">
-              <span class="etiqueta">Nuevo</span>
-            </div>
-            <div class="producto__info">
-              <p class="producto__categoria">Audio</p>
-              <h3 class="producto__nombre">Audífonos inalámbricos</h3>
-              <p class="producto__precio">$129.900</p>
-              <button class="boton boton--primario btn-agregar" type="button">Agregar al carrito</button>
-            </div>
-          </article>
-
-          <article class="producto" data-id="2" data-nombre="Reloj clásico" data-precio="219900"
-            data-imagen="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&q=80&auto=format&fit=crop">
-            <div class="producto__imagen">
-              <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&q=80&auto=format&fit=crop" alt="Reloj clásico" loading="lazy">
-            </div>
-            <div class="producto__info">
-              <p class="producto__categoria">Accesorios</p>
-              <h3 class="producto__nombre">Reloj clásico</h3>
-              <p class="producto__precio">$219.900</p>
-              <button class="boton boton--primario btn-agregar" type="button">Agregar al carrito</button>
-            </div>
-          </article>
-
-          <article class="producto" data-id="3" data-nombre="Cámara instantánea" data-precio="389900"
-            data-imagen="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=600&q=80&auto=format&fit=crop">
-            <div class="producto__imagen">
-              <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=600&q=80&auto=format&fit=crop" alt="Cámara instantánea" loading="lazy">
-              <span class="etiqueta etiqueta--oferta">Más vendido</span>
-            </div>
-            <div class="producto__info">
-              <p class="producto__categoria">Fotografía</p>
-              <h3 class="producto__nombre">Cámara instantánea</h3>
-              <p class="producto__precio">$389.900</p>
-              <button class="boton boton--primario btn-agregar" type="button">Agregar al carrito</button>
-            </div>
-          </article>
-
-          <article class="producto" data-id="4" data-nombre="Tenis deportivos" data-precio="179900"
-            data-imagen="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&q=80&auto=format&fit=crop">
-            <div class="producto__imagen">
-              <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&q=80&auto=format&fit=crop" alt="Tenis deportivos" loading="lazy">
-            </div>
-            <div class="producto__info">
-              <p class="producto__categoria">Calzado</p>
-              <h3 class="producto__nombre">Tenis deportivos</h3>
-              <p class="producto__precio">$179.900</p>
-              <button class="boton boton--primario btn-agregar" type="button">Agregar al carrito</button>
-            </div>
-          </article>
-
-          <article class="producto" data-id="5" data-nombre="Gafas de sol" data-precio="89900"
-            data-imagen="https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=600&q=80&auto=format&fit=crop">
-            <div class="producto__imagen">
-              <img src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=600&q=80&auto=format&fit=crop" alt="Gafas de sol" loading="lazy">
-            </div>
-            <div class="producto__info">
-              <p class="producto__categoria">Accesorios</p>
-              <h3 class="producto__nombre">Gafas de sol</h3>
-              <p class="producto__precio">$89.900</p>
-              <button class="boton boton--primario btn-agregar" type="button">Agregar al carrito</button>
-            </div>
-          </article>
-
-          <article class="producto" data-id="6" data-nombre="Smartwatch deportivo" data-precio="299900"
-            data-imagen="https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=600&q=80&auto=format&fit=crop">
-            <div class="producto__imagen">
-              <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=600&q=80&auto=format&fit=crop" alt="Smartwatch deportivo" loading="lazy">
-              <span class="etiqueta">Nuevo</span>
-            </div>
-            <div class="producto__info">
-              <p class="producto__categoria">Tecnología</p>
-              <h3 class="producto__nombre">Smartwatch deportivo</h3>
-              <p class="producto__precio">$299.900</p>
-              <button class="boton boton--primario btn-agregar" type="button">Agregar al carrito</button>
-            </div>
-          </article>
-
-          <article class="producto" data-id="7" data-nombre="Perfume floral 100 ml" data-precio="159900"
-            data-imagen="https://images.unsplash.com/photo-1541643600914-78b084683601?w=600&q=80&auto=format&fit=crop">
-            <div class="producto__imagen">
-              <img src="https://images.unsplash.com/photo-1541643600914-78b084683601?w=600&q=80&auto=format&fit=crop" alt="Perfume floral" loading="lazy">
-            </div>
-            <div class="producto__info">
-              <p class="producto__categoria">Belleza</p>
-              <h3 class="producto__nombre">Perfume floral 100 ml</h3>
-              <p class="producto__precio">$159.900</p>
-              <button class="boton boton--primario btn-agregar" type="button">Agregar al carrito</button>
-            </div>
-          </article>
-
-          <article class="producto" data-id="8" data-nombre="Morral urbano" data-precio="139900"
-            data-imagen="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600&q=80&auto=format&fit=crop">
-            <div class="producto__imagen">
-              <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600&q=80&auto=format&fit=crop" alt="Morral urbano" loading="lazy">
-            </div>
-            <div class="producto__info">
-              <p class="producto__categoria">Accesorios</p>
-              <h3 class="producto__nombre">Morral urbano</h3>
-              <p class="producto__precio">$139.900</p>
-              <button class="boton boton--primario btn-agregar" type="button">Agregar al carrito</button>
-            </div>
-          </article>
-          <!------------------------------Agregar 2 Productos al inventario------------------------------>
-          <article class="producto" data-id="9" data-nombre="Cable Tipo C Ugreen" data-precio="38445"
-            data-imagen="https://http2.mlstatic.com/D_Q_NP_773249-MLA100002856027_112025-F.webp">
-            <div class="producto__imagen">
-              <img src="https://http2.mlstatic.com/D_Q_NP_773249-MLA100002856027_112025-F.webp" alt="Cable Tipo C Ugreen" loading="lazy">
-              <span class="etiqueta">Nuevo</span>
-
-            </div>
-            <div class="producto__info">
-              <p class="producto__categoria">Tecnologia</p>
-              <h3 class="producto__nombre">Cable Tipo C Ugreen</h3>
-              <p class="producto__precio">$38.445</p>
-              <button class="boton boton--primario btn-agregar" type="button">Agregar al carrito</button>
-            </div>
-          </article>
-
-          <article class="producto" data-id="10" data-nombre="Air Jordan 1 Travis Scott" data-precio="6293765"
-            data-imagen="https://cdn-images.farfetch-contents.com/14/07/70/10/14077010_18662963_600.jpg">
-            <div class="producto__imagen">
-              <img src="https://cdn-images.farfetch-contents.com/14/07/70/10/14077010_18662963_600.jpg" alt="Air Jordan 1 Travis Scott" loading="lazy">
-              <span class="etiqueta">Recien Sacadas del Nike Store</span>
-
-            </div>
-            <div class="producto__info">
-              <p class="producto__categoria">Calzado</p>
-              <h3 class="producto__nombre">Air Jordan 1 Travis Scott</h3>
-              <p class="producto__precio">$6'293.765</p>
-              <button class="boton boton--primario btn-agregar" type="button">Agregar al carrito</button>
-            </div>
-          </article>
-
+          <!-- Renderizado dinámicamente desde la API -->
         </div>
       </section>
 
@@ -342,8 +217,196 @@
     </div>
   </footer>
 
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <!-- =========================================================
+       MODAL 1: REGISTRO Y EDICIÓN DE PRODUCTOS (CON DRAG & DROP)
+       ========================================================= -->
+  <div class="modal" id="modal-producto" role="dialog" aria-modal="true" aria-labelledby="modal-producto-titulo" hidden>
+    <div class="modal__contenedor modal__contenedor--amplio">
+      <div class="modal__cabecera">
+        <h3 id="modal-producto-titulo">Registrar Nuevo Producto</h3>
+        <button class="modal__cerrar" id="btn-cerrar-modal" type="button" aria-label="Cerrar modal">&times;</button>
+      </div>
 
+      <form id="form-producto" novalidate>
+        <div class="modal__cuerpo modal__cuerpo--dos-columnas">
+          <input type="hidden" id="producto-id" value="">
+          <input type="hidden" id="producto-imagen-url" value="">
+
+          <div class="alerta-formulario campo--completo" id="alerta-error-modal" hidden></div>
+
+          <!-- COLUMNA IZQUIERDA: ZONA DE IMAGEN (DRAG & DROP) -->
+          <div class="modal__columna-imagen">
+            <label class="etiqueta-seccion">Imagen del producto</label>
+            
+            <div class="dropzone" id="dropzone-imagen" tabindex="0" role="button" aria-label="Zona para arrastrar y soltar o seleccionar imagen">
+              <div class="dropzone__contenido">
+                <div class="dropzone__circulo-icono">
+                  <svg class="dropzone__icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                    <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                    <polyline points="21 15 16 10 5 21"></polyline>
+                  </svg>
+                </div>
+                <p class="dropzone__texto">Arrastra tu imagen aquí</p>
+                <p class="dropzone__subtexto">o <span class="dropzone__enlace">explora tus archivos</span></p>
+                <div class="dropzone__formatos">
+                  <span>JPG</span><span>PNG</span><span>WEBP</span>
+                  <small>Máx. 2 MB</small>
+                </div>
+              </div>
+              <input type="file" id="input-archivo-imagen" accept="image/jpeg,image/png,image/webp" class="dropzone__input">
+            </div>
+
+            <!-- Vista previa de imagen -->
+            <div class="dropzone__preview" id="preview-imagen" hidden>
+              <div class="preview__contenedor-img">
+                <img id="img-preview" src="" alt="Vista previa de imagen">
+              </div>
+              <div class="dropzone__preview-info">
+                <p class="dropzone__preview-nombre" id="preview-nombre">imagen.png</p>
+                <p class="dropzone__preview-tamano" id="preview-tamano">1.2 MB</p>
+              </div>
+              <div class="preview__acciones">
+                <button type="button" class="btn-cambiar-imagen" id="btn-cambiar-imagen">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="17 8 12 3 7 8"></polyline>
+                    <line x1="12" y1="3" x2="12" y2="15"></line>
+                  </svg>
+                  Cambiar
+                </button>
+                <button type="button" class="dropzone__btn-quitar" id="btn-quitar-imagen">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                  Quitar
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- COLUMNA DERECHA: DATOS DEL PRODUCTO -->
+          <div class="modal__columna-datos">
+            <div class="formulario-grid">
+              <div class="campo">
+                <div class="campo__cabecera">
+                  <label for="producto-codigo">Código único <span class="obligatorio">*</span></label>
+                  <button type="button" class="btn-generar-codigo" id="btn-generar-codigo" title="Generar código automático">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="23 4 23 10 17 10"></polyline>
+                      <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+                    </svg>
+                    Auto
+                  </button>
+                </div>
+                <input type="text" id="producto-codigo" placeholder="Ej. PRD-011" maxlength="50" required>
+                <span class="campo__error" id="error-codigo">Ingresa un código único válido.</span>
+              </div>
+
+              <div class="campo">
+                <label for="producto-categoria">Categoría <span class="obligatorio">*</span></label>
+                <select id="producto-categoria" required>
+                  <option value="">Seleccionar categoría...</option>
+                  <option value="Tecnología">Tecnología</option>
+                  <option value="Audio">Audio</option>
+                  <option value="Accesorios">Accesorios</option>
+                  <option value="Calzado">Calzado</option>
+                  <option value="Belleza">Belleza</option>
+                  <option value="Fotografía">Fotografía</option>
+                  <option value="Ofertas">Ofertas</option>
+                </select>
+                <span class="campo__error" id="error-categoria">Selecciona una categoría.</span>
+              </div>
+
+              <div class="campo campo--completo">
+                <label for="producto-nombre">Nombre del producto <span class="obligatorio">*</span></label>
+                <input type="text" id="producto-nombre" placeholder="Ej. Auriculares Gamer Inalámbricos" maxlength="150" required>
+                <span class="campo__error" id="error-nombre">El nombre es obligatorio.</span>
+              </div>
+
+              <div class="campo">
+                <label for="producto-precio">Precio (COP) <span class="obligatorio">*</span></label>
+                <input type="number" id="producto-precio" placeholder="Ej. 189900" min="0" step="100" required>
+                <span class="campo__error" id="error-precio">El precio no puede ser negativo.</span>
+              </div>
+
+              <div class="campo">
+                <label for="producto-cantidad">Cantidad (Stock) <span class="obligatorio">*</span></label>
+                <input type="number" id="producto-cantidad" placeholder="Ej. 10" min="0" step="1" required>
+                <span class="campo__error" id="error-cantidad">La cantidad no puede ser negativa.</span>
+              </div>
+
+              <div class="campo">
+                <label for="producto-umbral">Umbral inventario bajo <span class="obligatorio">*</span></label>
+                <input type="number" id="producto-umbral" placeholder="Ej. 5" min="1" step="1" value="5" required>
+                <span class="campo__error" id="error-umbral">El umbral debe ser al menos 1.</span>
+              </div>
+
+              <div class="campo">
+                <label for="producto-etiqueta">Etiqueta comercial</label>
+                <input type="text" id="producto-etiqueta" placeholder="Ej. Nuevo, Oferta, Más vendido" maxlength="50">
+              </div>
+
+              <div class="campo campo--completo">
+                <label for="producto-descripcion">Descripción detallada</label>
+                <textarea id="producto-descripcion" rows="3" placeholder="Describe las características y beneficios del producto..."></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal__pie">
+          <button type="button" class="boton boton--secundario" id="btn-cancelar-producto">Cancelar</button>
+          <button type="submit" class="boton boton--primario btn-agregar-modal" id="btn-guardar-producto">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+            Agregar Nuevo Producto
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       MODAL 2: CONFIRMACIÓN DE ELIMINACIÓN LÓGICA (SOFT DELETE)
+       ========================================================= -->
+  <div class="modal" id="modal-eliminar" role="dialog" aria-modal="true" aria-labelledby="modal-eliminar-titulo" hidden>
+    <div class="modal__contenedor modal__contenedor--alerta">
+      <div class="modal__cabecera">
+        <h3 id="modal-eliminar-titulo">Confirmar Eliminación</h3>
+        <button class="modal__cerrar" id="btn-cerrar-modal-eliminar" type="button" aria-label="Cerrar modal">&times;</button>
+      </div>
+
+      <div class="modal__cuerpo cuerpo-eliminar">
+        <div class="icono-alerta-eliminar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="3 6 5 6 21 6"></polyline>
+            <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"></path>
+            <path d="M10 11v6"></path><path d="M14 11v6"></path>
+            <path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"></path>
+          </svg>
+        </div>
+
+        <h4>¿Eliminar este producto?</h4>
+        <p>El producto será retirado del catálogo activo mediante <strong>eliminación lógica (Soft Delete)</strong>. Podrás consultar el histórico en la base de datos.</p>
+
+        <div class="tarjeta-resumen-eliminar">
+          <p><strong id="eliminar-producto-nombre">Producto</strong></p>
+          <p>Código: <code id="eliminar-producto-codigo">PRD-000</code></p>
+        </div>
+      </div>
+
+      <div class="modal__pie">
+        <button type="button" class="boton boton--secundario" id="btn-cancelar-eliminar">Cancelar</button>
+        <button type="button" class="boton btn-admin--eliminar" id="btn-confirmar-eliminar" style="background: var(--color-peligro); color: #fff; border: none; padding: 0.6rem 1.2rem; border-radius: var(--radio-sm); font-weight: 600;">Confirmar Eliminación</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 </body>
 </html>
