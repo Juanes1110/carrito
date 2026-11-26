@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nova Store | Tienda en línea</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234f46e5'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='Arial,sans-serif' font-size='34' font-weight='bold'%3EN%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -24,21 +25,38 @@
     <div class="contenedor encabezado__contenido">
       <a href="#" class="logo">Nova<span>Store</span></a>
 
+      <!-- MÓDULO 1: Buscador de productos por nombre o código -->
       <form class="buscador" role="search" id="form-buscador" action="#">
         <input type="search" id="input-buscador" placeholder="Buscar por nombre o código..." aria-label="Buscar productos">
         <button type="submit">Buscar</button>
       </form>
 
-      <a href="#carrito" class="icono-carrito" aria-label="Ver carrito">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="9" cy="21" r="1"></circle>
-          <circle cx="20" cy="21" r="1"></circle>
-          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-        </svg>
-        <span class="icono-carrito__contador" id="contador-carrito">2</span>
-      </a>
+      <!-- Accesos rápidos en cabecera: Módulo 3 (Pedidos) y Módulo 2 (Carrito) -->
+      <div class="encabezado__acciones">
+        <a href="#seccion-pedidos" class="btn-ver-pedidos" id="btn-ir-pedidos" aria-label="Consultar pedidos registrados">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"></path>
+            <rect x="9" y="3" width="6" height="4" rx="1"></rect>
+            <line x1="9" y1="12" x2="15" y2="12"></line>
+            <line x1="9" y1="16" x2="13" y2="16"></line>
+          </svg>
+          <span>Pedidos</span>
+          <span class="btn-ver-pedidos__contador" id="contador-pedidos-header">0</span>
+        </a>
+
+        <!-- MÓDULO 2: Icono acceso rápido al carrito -->
+        <a href="#carrito" class="icono-carrito" aria-label="Ver carrito">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+          </svg>
+          <span class="icono-carrito__contador" id="contador-carrito">0</span>
+        </a>
+      </div>
     </div>
 
+    <!-- MÓDULO 1: Filtro de productos por categoría -->
     <nav class="menu" id="menu-categorias">
       <ul class="contenedor">
         <li><a href="#" class="activo" data-categoria="todo">Todo</a></li>
@@ -67,7 +85,9 @@
 
     <div class="tienda">
 
-     
+      <!-- =========================================================
+           MÓDULO 1: GESTIÓN Y CATÁLOGO DE PRODUCTOS
+           ========================================================= -->
       <section class="productos">
         <div class="productos__cabecera">
           <div>
@@ -90,82 +110,39 @@
         </div>
       </section>
 
-    
+      <!-- =========================================================
+           MÓDULO 2: CARRITO DE COMPRAS Y VALIDACIÓN DE EXISTENCIAS
+           ========================================================= -->
       <aside class="carrito" id="carrito">
         <div class="carrito__cabecera">
           <h2>Tu carrito</h2>
           <button class="boton-texto" id="vaciar-carrito" type="button">Vaciar carrito</button>
         </div>
 
-        <div class="carrito__promo activa" id="promo">
-          <p id="promo-texto">🎉 ¡Genial! Tu compra al Superar los <strong>$250.000</strong> Estás ahorrando <strong id ="ahorro"></strong> con el 15%</p>
-          <div class="progreso"><div class="progreso__barra" id="progreso-barra" style="width: 100%;"></div></div>
+        <div class="carrito__promo activa" id="promo" hidden>
+          <p id="promo-texto">🎉 ¡Genial! Tu compra al superar los <strong>$250.000</strong> está ahorrando <strong id="ahorro">$0</strong> con el 15%</p>
+          <div class="progreso"><div class="progreso__barra" id="progreso-barra" style="width: 0%;"></div></div>
         </div>
 
 
-        <div class="carrito__vacio" id="carrito-vacio" hidden>
+        <div class="carrito__vacio" id="carrito-vacio">
           <span>🛒</span>
           Tu carrito está vacío.<br>¡Agrega productos para empezar!
         </div>
 
         <ul class="carrito__lista" id="lista-carrito">
-          <li class="item-carrito">
-            <img class="item-carrito__imagen" src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&q=80&auto=format&fit=crop" alt="Audífonos inalámbricos">
-            <div>
-              <p class="item-carrito__nombre">Audífonos inalámbricos</p>
-              <p class="item-carrito__precio">$129.900 c/u</p>
-              <div class="cantidad">
-                <button class="cantidad__btn" data-accion="restar" data-id="1" aria-label="Restar uno">−</button>
-                <span class="cantidad__valor">1</span>
-                <button class="cantidad__btn" data-accion="sumar" data-id="1" aria-label="Sumar uno">+</button>
-              </div>
-            </div>
-            <div class="item-carrito__lateral">
-              <p class="item-carrito__total">$129.900</p>
-              <button class="item-carrito__eliminar" data-accion="eliminar" data-id="1" aria-label="Eliminar producto">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="3 6 5 6 21 6"></polyline>
-                  <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"></path>
-                  <path d="M10 11v6"></path><path d="M14 11v6"></path>
-                  <path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"></path>
-                </svg>
-              </button>
-            </div>
-          </li>
-          <li class="item-carrito">
-            <img class="item-carrito__imagen" src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&q=80&auto=format&fit=crop" alt="Reloj clásico">
-            <div>
-              <p class="item-carrito__nombre">Reloj clásico</p>
-              <p class="item-carrito__precio">$219.900 c/u</p>
-              <div class="cantidad">
-                <button class="cantidad__btn" data-accion="restar" data-id="2" aria-label="Restar uno">−</button>
-                <span class="cantidad__valor">1</span>
-                <button class="cantidad__btn" data-accion="sumar" data-id="2" aria-label="Sumar uno">+</button>
-              </div>
-            </div>
-            <div class="item-carrito__lateral">
-              <p class="item-carrito__total">$219.900</p>
-              <button class="item-carrito__eliminar" data-accion="eliminar" data-id="2" aria-label="Eliminar producto">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="3 6 5 6 21 6"></polyline>
-                  <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"></path>
-                  <path d="M10 11v6"></path><path d="M14 11v6"></path>
-                  <path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"></path>
-                </svg>
-              </button>
-            </div>
-          </li>
+          <!-- Renderizado dinámicamente desde JavaScript -->
         </ul>
 
         <div class="carrito__resumen">
           <div class="resumen__fila">
             <span>Subtotal</span>
-            <span id="subtotal">$349.800</span>
+            <span id="subtotal">$0</span>
           </div>
      
-          <div class="resumen__fila resumen__fila--descuento" id="fila-descuento">
+          <div class="resumen__fila resumen__fila--descuento" id="fila-descuento" hidden>
             <span>Descuento (15%)</span>
-            <span id="descuento">-$52.470</span>
+            <span id="descuento">-$0</span>
           </div>
           <div class="resumen__fila">
             <span>Envío</span>
@@ -173,7 +150,7 @@
           </div>
           <div class="resumen__fila resumen__fila--total">
             <span>Total</span>
-            <span id="total">$297.330</span>
+            <span id="total">$0</span>
           </div>
         </div>
 
@@ -186,6 +163,36 @@
       </aside>
 
     </div>
+
+    <!-- =========================================================
+         MÓDULO 3: CONSULTA DE PEDIDOS REGISTRADOS
+         Muestra identificador, fecha, productos, cantidades y total
+         ========================================================= -->
+    <section class="pedidos" id="seccion-pedidos" aria-labelledby="titulo-pedidos">
+      <div class="pedidos__cabecera">
+        <div>
+          <h2 id="titulo-pedidos">Consulta de pedidos</h2>
+          <p class="pedidos__subtitulo">Historial de compras registradas con detalle de productos, cantidades y totales.</p>
+        </div>
+        <div class="pedidos__controles">
+          <span class="contador-productos" id="contador-pedidos">Cargando pedidos...</span>
+          <div class="pedidos__buscador">
+            <input type="search" id="input-buscar-pedido" placeholder="Buscar por código (ej. PED-00001) o producto..." aria-label="Buscar pedidos">
+          </div>
+          <button type="button" class="boton boton--secundario pedidos__btn-actualizar" id="btn-actualizar-pedidos">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="23 4 23 10 17 10"></polyline>
+              <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+            </svg>
+            Actualizar
+          </button>
+        </div>
+      </div>
+
+      <div class="pedidos__lista" id="lista-pedidos">
+        <!-- Renderizado dinámicamente desde GET /api/pedidos -->
+      </div>
+    </section>
   </main>
 
 
@@ -218,7 +225,7 @@
   </footer>
 
   <!-- =========================================================
-       MODAL 1: REGISTRO Y EDICIÓN DE PRODUCTOS (CON DRAG & DROP)
+       MÓDULO 1 — MODAL 1: REGISTRO Y EDICIÓN DE PRODUCTOS (CON DRAG & DROP)
        ========================================================= -->
   <div class="modal" id="modal-producto" role="dialog" aria-modal="true" aria-labelledby="modal-producto-titulo" hidden>
     <div class="modal__contenedor modal__contenedor--amplio">
@@ -371,7 +378,7 @@
   </div>
 
   <!-- =========================================================
-       MODAL 2: CONFIRMACIÓN DE ELIMINACIÓN LÓGICA (SOFT DELETE)
+       MÓDULO 1 — MODAL 2: CONFIRMACIÓN DE ELIMINACIÓN LÓGICA (SOFT DELETE)
        ========================================================= -->
   <div class="modal" id="modal-eliminar" role="dialog" aria-modal="true" aria-labelledby="modal-eliminar-titulo" hidden>
     <div class="modal__contenedor modal__contenedor--alerta">
@@ -402,6 +409,40 @@
       <div class="modal__pie">
         <button type="button" class="boton boton--secundario" id="btn-cancelar-eliminar">Cancelar</button>
         <button type="button" class="boton btn-admin--eliminar" id="btn-confirmar-eliminar" style="background: var(--color-peligro); color: #fff; border: none; padding: 0.6rem 1.2rem; border-radius: var(--radio-sm); font-weight: 600;">Confirmar Eliminación</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       MODAL 3: CONFIRMACIÓN DE COMPRA EXITOSA (MÓDULO 2)
+       ========================================================= -->
+  <div class="modal" id="modal-compra" role="dialog" aria-modal="true" aria-labelledby="modal-compra-titulo" hidden>
+    <div class="modal__contenedor modal__contenedor--alerta">
+      <div class="modal__cabecera">
+        <h3 id="modal-compra-titulo">¡Compra Confirmada!</h3>
+        <button class="modal__cerrar" id="btn-cerrar-modal-compra" type="button" aria-label="Cerrar modal">&times;</button>
+      </div>
+
+      <div class="modal__cuerpo cuerpo-compra">
+        <div class="icono-compra-exitosa">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </div>
+
+        <h4>Gracias por tu compra en NovaStore</h4>
+        <p class="compra-subtitulo">Pedido registrado: <strong id="compra-codigo-pedido">PED-00000</strong></p>
+
+        <ul class="compra-lista-items" id="compra-lista-items"></ul>
+
+        <div class="compra-resumen-total">
+          <span>Total pagado</span>
+          <strong id="compra-total-pagado">$0</strong>
+        </div>
+      </div>
+
+      <div class="modal__pie">
+        <button type="button" class="boton boton--primario boton--bloque" id="btn-aceptar-compra">Seguir comprando</button>
       </div>
     </div>
   </div>

@@ -6,6 +6,7 @@ CREATE DATABASE IF NOT EXISTS novastore CHARACTER SET utf8mb4 COLLATE utf8mb4_un
 USE novastore;
 
 -- --------------------------------------------------------------------
+-- MÓDULO 1: GESTIÓN DE PRODUCTOS
 -- Tabla: categorias
 -- --------------------------------------------------------------------
 CREATE TABLE IF NOT EXISTS categorias (
@@ -72,3 +73,39 @@ INSERT INTO productos (codigo, nombre, descripcion, categoria, precio, cantidad,
 ('PRD-009', 'Cable Tipo C Ugreen', 'Cable reforzado de carga rápida y transferencia de datos.', 'Tecnología', 38445, 25, 5, 'https://http2.mlstatic.com/D_Q_NP_773249-MLA100002856027_112025-F.webp', 'Nuevo', 1),
 ('PRD-010', 'Air Jordan 1 Travis Scott', 'Edición especial de colección con diseño prémium.', 'Calzado', 6293765, 2, 2, 'https://cdn-images.farfetch-contents.com/14/07/70/10/14077010_18662963_600.jpg', 'Recien Sacadas del Nike Store', 1)
 ON DUPLICATE KEY UPDATE codigo=VALUES(codigo);
+
+-- ====================================================================
+-- MÓDULO 2 (CARRITO / CHECKOUT) Y MÓDULO 3 (CONSULTA DE PEDIDOS)
+-- ====================================================================
+
+-- --------------------------------------------------------------------
+-- Tabla: pedidos (Cabecera de cada compra confirmada)
+-- --------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS pedidos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    codigo_pedido VARCHAR(50) NOT NULL UNIQUE,
+    subtotal INT NOT NULL,
+    descuento INT NOT NULL DEFAULT 0,
+    envio INT NOT NULL DEFAULT 0,
+    total INT NOT NULL,
+    fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    INDEX idx_codigo_pedido (codigo_pedido),
+    INDEX idx_fecha_creacion (fecha_creacion)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------------------
+-- Tabla: detalle_pedidos
+-- --------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS detalle_pedidos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    pedido_id INT NOT NULL,
+    producto_id INT NOT NULL,
+    codigo_producto VARCHAR(50) NOT NULL,
+    nombre_producto VARCHAR(150) NOT NULL,
+    precio_unitario INT NOT NULL,
+    cantidad INT NOT NULL,
+    subtotal_linea INT NOT NULL,
+    FOREIGN KEY (pedido_id) REFERENCES pedidos(id) ON DELETE CASCADE,
+    FOREIGN KEY (producto_id) REFERENCES productos(id),
+    INDEX idx_pedido_id (pedido_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

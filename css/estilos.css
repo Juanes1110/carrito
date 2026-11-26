@@ -137,6 +137,54 @@ ul {
   font-weight: 500;
 }
 
+.encabezado__acciones {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* MÓDULO 3: Botón de acceso rápido a consulta de pedidos */
+.btn-ver-pedidos {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.55rem 0.9rem;
+  border-radius: 999px;
+  background: var(--color-fondo);
+  border: 1px solid var(--color-borde);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-texto);
+  transition: all var(--transicion);
+  white-space: nowrap;
+}
+
+.btn-ver-pedidos:hover {
+  background: #e0e7ff;
+  border-color: #c7d2fe;
+  color: var(--color-primario);
+}
+
+.btn-ver-pedidos svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.btn-ver-pedidos__contador {
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  border-radius: 999px;
+  background: var(--color-primario);
+  color: var(--color-blanco);
+  font-size: 0.72rem;
+  font-weight: 600;
+  display: grid;
+  place-items: center;
+}
+
+/* MÓDULO 2: Icono de acceso al carrito */
 .icono-carrito {
   position: relative;
   display: grid;
@@ -410,6 +458,17 @@ ul {
   cursor: not-allowed;
 }
 
+.boton--secundario {
+  background: var(--color-blanco);
+  color: var(--color-texto);
+  border: 1px solid var(--color-borde);
+}
+
+.boton--secundario:hover {
+  background: var(--color-fondo);
+  border-color: var(--color-texto-suave);
+}
+
 .boton--agregado {
   background: var(--color-exito);
 }
@@ -440,7 +499,9 @@ ul {
   color: var(--color-peligro);
 }
 
-/* ---------- Carrito ---------- */
+/* =========================================================
+   MÓDULO 2: CARRITO DE COMPRAS (Base + Validación de Stock)
+   ========================================================= */
 .carrito {
   position: sticky;
   top: 140px;
@@ -552,7 +613,20 @@ ul {
 .item-carrito__precio {
   font-size: 0.78rem;
   color: var(--color-texto-suave);
+  margin-bottom: 0.15rem;
+}
+
+/* MÓDULO 2: Indicador de existencias disponibles en cada ítem del carrito */
+.item-carrito__stock {
+  font-size: 0.74rem;
+  color: var(--color-exito);
+  font-weight: 500;
   margin-bottom: 0.35rem;
+}
+
+.item-carrito__stock--limite {
+  color: #ea580c;
+  font-weight: 600;
 }
 
 .cantidad {
@@ -572,8 +646,13 @@ ul {
   border-radius: 50%;
 }
 
-.cantidad__btn:hover {
+.cantidad__btn:hover:not(:disabled) {
   background: var(--color-fondo);
+}
+
+.cantidad__btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
 }
 
 .cantidad__valor {
@@ -742,7 +821,7 @@ ul {
     flex-basis: 100%;
   }
 
-  .icono-carrito {
+  .encabezado__acciones {
     margin-left: auto;
   }
 
@@ -1596,5 +1675,337 @@ ul {
   .dropzone__icono {
     width: 22px;
     height: 22px;
+  }
+}
+
+/* =========================================================
+   MÓDULO 2: MODAL DE COMPRA EXITOSA (CHECKOUT)
+   ========================================================= */
+.cuerpo-compra {
+  text-align: center;
+  gap: 0.9rem;
+}
+
+.icono-compra-exitosa {
+  width: 58px;
+  height: 58px;
+  margin-inline: auto;
+  border-radius: 50%;
+  background: var(--color-exito-claro);
+  color: var(--color-exito);
+  display: grid;
+  place-items: center;
+}
+
+.icono-compra-exitosa svg {
+  width: 30px;
+  height: 30px;
+}
+
+.cuerpo-compra h4 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--color-texto);
+}
+
+.compra-subtitulo {
+  font-size: 0.88rem;
+  color: var(--color-texto-suave);
+}
+
+.compra-subtitulo strong {
+  color: var(--color-primario);
+  font-family: monospace;
+  font-size: 0.95rem;
+}
+
+.compra-lista-items {
+  background: var(--color-fondo);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-sm);
+  padding: 0.75rem 1rem;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  max-height: 210px;
+  overflow-y: auto;
+}
+
+.compra-lista-items li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.86rem;
+  color: var(--color-texto);
+}
+
+.compra-resumen-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 1rem;
+  border-radius: var(--radio-sm);
+  background: #eef2ff;
+  border: 1px solid #c7d2fe;
+  font-size: 0.98rem;
+}
+
+.compra-resumen-total strong {
+  font-size: 1.15rem;
+  color: var(--color-primario);
+}
+
+/* =========================================================
+   MÓDULO 3: CONSULTA DE PEDIDOS REGISTRADOS
+   ========================================================= */
+.pedidos {
+  margin-top: 2.8rem;
+  background: var(--color-blanco);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+  padding: 1.75rem;
+}
+
+.pedidos__cabecera {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--color-borde);
+  margin-bottom: 1.5rem;
+}
+
+.pedidos__cabecera h2 {
+  font-size: 1.4rem;
+}
+
+.pedidos__subtitulo {
+  font-size: 0.88rem;
+  color: var(--color-texto-suave);
+  margin-top: 0.2rem;
+}
+
+.pedidos__controles {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.pedidos__buscador input {
+  width: 280px;
+  max-width: 100%;
+  padding: 0.55rem 0.85rem;
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-sm);
+  font-family: inherit;
+  font-size: 0.85rem;
+  outline: none;
+  transition: border-color var(--transicion);
+}
+
+.pedidos__buscador input:focus {
+  border-color: var(--color-primario);
+}
+
+.pedidos__btn-actualizar {
+  padding: 0.52rem 0.9rem;
+  font-size: 0.85rem;
+}
+
+.pedidos__btn-actualizar svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.pedidos__lista {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1.25rem;
+}
+
+.pedido-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-sm);
+  background: #fcfcfd;
+  overflow: hidden;
+  transition: box-shadow var(--transicion), transform var(--transicion);
+}
+
+.pedido-card:hover {
+  box-shadow: var(--sombra);
+  transform: translateY(-2px);
+}
+
+.pedido-card__cabecera {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1rem 1.15rem;
+  background: var(--color-blanco);
+  border-bottom: 1px solid var(--color-borde);
+}
+
+.pedido-card__codigo {
+  display: inline-block;
+  font-family: monospace;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-primario);
+  background: #eef2ff;
+  padding: 0.2rem 0.6rem;
+  border-radius: 6px;
+}
+
+.pedido-card__id-interno {
+  display: block;
+  font-size: 0.74rem;
+  color: var(--color-texto-suave);
+  margin-top: 0.25rem;
+}
+
+.pedido-card__fecha {
+  text-align: right;
+  font-size: 0.78rem;
+  color: var(--color-texto-suave);
+}
+
+.pedido-card__fecha strong {
+  display: block;
+  color: var(--color-texto);
+  font-weight: 600;
+}
+
+.pedido-card__cuerpo {
+  padding: 1rem 1.15rem;
+  flex: 1;
+}
+
+.pedido-card__etiqueta-items {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-texto-suave);
+  margin-bottom: 0.6rem;
+}
+
+.pedido-card__items {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.pedido-card__item {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.84rem;
+  padding-bottom: 0.45rem;
+  border-bottom: 1px dashed var(--color-borde);
+}
+
+.pedido-card__item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.pedido-card__item-nombre {
+  font-weight: 500;
+  color: var(--color-texto);
+}
+
+.pedido-card__item-codigo {
+  display: block;
+  font-family: monospace;
+  font-size: 0.72rem;
+  color: var(--color-texto-suave);
+}
+
+.pedido-card__item-cantidad {
+  background: var(--color-fondo);
+  border: 1px solid var(--color-borde);
+  border-radius: 999px;
+  padding: 0.12rem 0.55rem;
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--color-texto);
+  white-space: nowrap;
+}
+
+.pedido-card__item-subtotal {
+  font-weight: 600;
+  color: var(--color-texto);
+  text-align: right;
+  white-space: nowrap;
+}
+
+.pedido-card__pie {
+  padding: 0.9rem 1.15rem;
+  background: var(--color-blanco);
+  border-top: 1px solid var(--color-borde);
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.pedido-card__desglose {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: var(--color-texto-suave);
+}
+
+.pedido-card__total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 0.45rem;
+  margin-top: 0.25rem;
+  border-top: 1px solid var(--color-borde);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-texto);
+}
+
+.pedido-card__total strong {
+  color: var(--color-primario);
+  font-size: 1.12rem;
+}
+
+.pedidos-vacio {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 2.5rem 1.25rem;
+  border: 1px dashed var(--color-borde);
+  border-radius: var(--radio-sm);
+  color: var(--color-texto-suave);
+}
+
+.pedidos-vacio__icono {
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+}
+
+@media (max-width: 640px) {
+  .pedidos {
+    padding: 1.1rem;
+  }
+
+  .pedidos__lista {
+    grid-template-columns: 1fr;
+  }
+
+  .pedidos__buscador,
+  .pedidos__buscador input {
+    width: 100%;
   }
 }
